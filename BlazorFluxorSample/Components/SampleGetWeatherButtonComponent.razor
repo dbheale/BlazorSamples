@@ -1,0 +1,5 @@
+﻿@using Fluxor
+@using BlazorFluxorSample.Stores.Weather
+@inject IDispatcher _dispatcher
+
+<button @onclick="() => _dispatcher.Dispatch(new GetWeatherForecast())">Click here to get the weather!</button>

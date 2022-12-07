@@ -1,5 +1,7 @@
-﻿<h3>SampleCountComponent</h3>
+﻿@using Fluxor
+@using BlazorFluxorSample.Stores.Weather
+@inject IState<WeatherForecastState> _weatherForecastState;
 
-@code {
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
 
-}
+<span>Number of forecasts: @((_weatherForecastState.Value.WeatherForecasts?.Length ?? -1) + 1)</span>

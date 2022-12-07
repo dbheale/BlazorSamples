@@ -1,5 +1,18 @@
-﻿<h3>SampleComponent1</h3>
+﻿@using Fluxor
+@using BlazorFluxorSample.Data
+@using BlazorFluxorSample.Stores.Weather
+@inject IState<WeatherForecastState> _weatherForecastState;
+@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@if (Forecast is not null)
+{
+    <span class="bg-white">Selected weather: @Forecast.Date.ToShortDateString() @Forecast.TemperatureF @Forecast.Summary</span>
+}
 
 @code {
+
+    private WeatherForecast? Forecast => _weatherForecastState.Value.DefaultIndex != null
+        ? _weatherForecastState.Value.WeatherForecasts?[_weatherForecastState.Value.DefaultIndex.Value]
+        : null;
 
 }
